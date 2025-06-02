@@ -1,5 +1,4 @@
--- Rex's Sexy Internal
--- Synapse X Style GUI (Requires Attach)
+-- Rex's Sexy Internal - Synapse X Style GUI (Requires Attach)
 local gui = Instance.new("ScreenGui")
 local frame = Instance.new("Frame")
 local uicorner = Instance.new("UICorner")
@@ -30,7 +29,7 @@ uicorner.Parent = frame
 
 title.Name = "Title"
 title.Parent = frame
-title.Text = "Project Rex"
+title.Text = "Team Rex"
 title.Size = UDim2.new(1, 0, 0, 30)
 title.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 title.TextColor3 = Color3.fromRGB(0, 255, 255)
@@ -52,58 +51,52 @@ textbox.TextSize = 16
 textbox.TextXAlignment = Enum.TextXAlignment.Left
 textbox.TextYAlignment = Enum.TextYAlignment.Top
 
+local function styleButton(button)
+    button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.Font = Enum.Font.SourceSansBold
+end
+
 execute.Parent = frame
 execute.Text = "Execute"
 execute.Position = UDim2.new(0.02, 0, 0.55, 0)
 execute.Size = UDim2.new(0.3, 0, 0.1, 0)
-execute.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
-execute.TextColor3 = Color3.fromRGB(0, 0, 0)
-execute.Font = Enum.Font.SourceSansBold
+styleButton(execute)
 execute.TextSize = 18
 
 clear.Parent = frame
 clear.Text = "Clear"
 clear.Position = UDim2.new(0.35, 0, 0.55, 0)
 clear.Size = UDim2.new(0.3, 0, 0.1, 0)
-clear.BackgroundColor3 = Color3.fromRGB(255, 85, 0)
-clear.TextColor3 = Color3.fromRGB(0, 0, 0)
-clear.Font = Enum.Font.SourceSansBold
+styleButton(clear)
 clear.TextSize = 18
 
 inject.Parent = frame
 inject.Text = "Attach"
 inject.Position = UDim2.new(0.68, 0, 0.55, 0)
 inject.Size = UDim2.new(0.3, 0, 0.1, 0)
-inject.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-inject.TextColor3 = Color3.fromRGB(0, 0, 0)
-inject.Font = Enum.Font.SourceSansBold
+styleButton(inject)
 inject.TextSize = 18
 
 preset1.Parent = frame
 preset1.Text = "Cart Ride Into RDite"
 preset1.Position = UDim2.new(0.02, 0, 0.7, 0)
 preset1.Size = UDim2.new(0.3, 0, 0.1, 0)
-preset1.BackgroundColor3 = Color3.fromRGB(85, 85, 255)
-preset1.TextColor3 = Color3.fromRGB(255, 255, 255)
-preset1.Font = Enum.Font.SourceSansBold
+styleButton(preset1)
 preset1.TextSize = 16
 
 preset2.Parent = frame
 preset2.Text = "Da Hood (REMAKES)"
 preset2.Position = UDim2.new(0.35, 0, 0.7, 0)
 preset2.Size = UDim2.new(0.3, 0, 0.1, 0)
-preset2.BackgroundColor3 = Color3.fromRGB(255, 85, 255)
-preset2.TextColor3 = Color3.fromRGB(255, 255, 255)
-preset2.Font = Enum.Font.SourceSansBold
+styleButton(preset2)
 preset2.TextSize = 16
 
 preset3.Parent = frame
 preset3.Text = "Kitten Game"
 preset3.Position = UDim2.new(0.68, 0, 0.7, 0)
 preset3.Size = UDim2.new(0.3, 0, 0.1, 0)
-preset3.BackgroundColor3 = Color3.fromRGB(255, 255, 85)
-preset3.TextColor3 = Color3.fromRGB(0, 0, 0)
-preset3.Font = Enum.Font.SourceSansBold
+styleButton(preset3)
 preset3.TextSize = 16
 
 -- Logic
