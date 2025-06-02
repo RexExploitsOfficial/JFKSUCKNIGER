@@ -1,0 +1,157 @@
+-- Rex's Sexy Internal
+-- Synapse X Style GUI (Requires Attach)
+local gui = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
+local uicorner = Instance.new("UICorner")
+local title = Instance.new("TextLabel")
+local textbox = Instance.new("TextBox")
+local execute = Instance.new("TextButton")
+local clear = Instance.new("TextButton")
+local inject = Instance.new("TextButton")
+local preset1 = Instance.new("TextButton")
+local preset2 = Instance.new("TextButton")
+local preset3 = Instance.new("TextButton")
+
+local isInjected = false
+
+gui.Name = "SynapseStyleGUI"
+gui.Parent = game.CoreGui
+gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+frame.Name = "MainFrame"
+frame.Parent = gui
+frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+frame.Position = UDim2.new(0.3, 0, 0.2, 0)
+frame.Size = UDim2.new(0, 500, 0, 350)
+frame.Active = true
+frame.Draggable = true
+
+uicorner.Parent = frame
+
+title.Name = "Title"
+title.Parent = frame
+title.Text = "Project Rex"
+title.Size = UDim2.new(1, 0, 0, 30)
+title.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+title.TextColor3 = Color3.fromRGB(0, 255, 255)
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 20
+
+textbox.Name = "ScriptBox"
+textbox.Parent = frame
+textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+textbox.Position = UDim2.new(0.02, 0, 0.12, 0)
+textbox.Size = UDim2.new(0.96, 0, 0.4, 0)
+textbox.ClearTextOnFocus = false
+textbox.MultiLine = true
+textbox.TextWrapped = true
+textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
+textbox.Text = "-- Paste your script here"
+textbox.Font = Enum.Font.Code
+textbox.TextSize = 16
+textbox.TextXAlignment = Enum.TextXAlignment.Left
+textbox.TextYAlignment = Enum.TextYAlignment.Top
+
+execute.Parent = frame
+execute.Text = "Execute"
+execute.Position = UDim2.new(0.02, 0, 0.55, 0)
+execute.Size = UDim2.new(0.3, 0, 0.1, 0)
+execute.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+execute.TextColor3 = Color3.fromRGB(0, 0, 0)
+execute.Font = Enum.Font.SourceSansBold
+execute.TextSize = 18
+
+clear.Parent = frame
+clear.Text = "Clear"
+clear.Position = UDim2.new(0.35, 0, 0.55, 0)
+clear.Size = UDim2.new(0.3, 0, 0.1, 0)
+clear.BackgroundColor3 = Color3.fromRGB(255, 85, 0)
+clear.TextColor3 = Color3.fromRGB(0, 0, 0)
+clear.Font = Enum.Font.SourceSansBold
+clear.TextSize = 18
+
+inject.Parent = frame
+inject.Text = "Attach"
+inject.Position = UDim2.new(0.68, 0, 0.55, 0)
+inject.Size = UDim2.new(0.3, 0, 0.1, 0)
+inject.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+inject.TextColor3 = Color3.fromRGB(0, 0, 0)
+inject.Font = Enum.Font.SourceSansBold
+inject.TextSize = 18
+
+preset1.Parent = frame
+preset1.Text = "Cart Ride Into RDite"
+preset1.Position = UDim2.new(0.02, 0, 0.7, 0)
+preset1.Size = UDim2.new(0.3, 0, 0.1, 0)
+preset1.BackgroundColor3 = Color3.fromRGB(85, 85, 255)
+preset1.TextColor3 = Color3.fromRGB(255, 255, 255)
+preset1.Font = Enum.Font.SourceSansBold
+preset1.TextSize = 16
+
+preset2.Parent = frame
+preset2.Text = "Da Hood (REMAKES)"
+preset2.Position = UDim2.new(0.35, 0, 0.7, 0)
+preset2.Size = UDim2.new(0.3, 0, 0.1, 0)
+preset2.BackgroundColor3 = Color3.fromRGB(255, 85, 255)
+preset2.TextColor3 = Color3.fromRGB(255, 255, 255)
+preset2.Font = Enum.Font.SourceSansBold
+preset2.TextSize = 16
+
+preset3.Parent = frame
+preset3.Text = "Kitten Game"
+preset3.Position = UDim2.new(0.68, 0, 0.7, 0)
+preset3.Size = UDim2.new(0.3, 0, 0.1, 0)
+preset3.BackgroundColor3 = Color3.fromRGB(255, 255, 85)
+preset3.TextColor3 = Color3.fromRGB(0, 0, 0)
+preset3.Font = Enum.Font.SourceSansBold
+preset3.TextSize = 16
+
+-- Logic
+
+execute.MouseButton1Click:Connect(function()
+    if not isInjected then
+        textbox.Text = "-- Please press Attach before executing."
+        return
+    end
+    local source = textbox.Text
+    local success, err = pcall(function()
+        loadstring(source)()
+    end)
+    if not success then
+        textbox.Text = "-- Execution error:\n" .. tostring(err)
+        warn("Execution error:", err)
+    end
+end)
+
+clear.MouseButton1Click:Connect(function()
+    textbox.Text = ""
+end)
+
+inject.MouseButton1Click:Connect(function()
+    isInjected = true
+    textbox.Text = "-- Executor Attached Successfully!"
+end)
+
+preset1.MouseButton1Click:Connect(function()
+    if not isInjected then
+        textbox.Text = "-- Attach before loading scripts."
+        return
+    end
+    textbox.Text = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/RexExploitsOfficial/Cart-Ride-Into-RDite/main/SERVER%20ABUSE"))()'
+end)
+
+preset2.MouseButton1Click:Connect(function()
+    if not isInjected then
+        textbox.Text = "-- Attach before loading scripts."
+        return
+    end
+    textbox.Text = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/RexExploitsOfficial/Da-Hood-Fan-Games/main/jjj"))()'
+end)
+
+preset3.MouseButton1Click:Connect(function()
+    if not isInjected then
+        textbox.Text = "-- Attach before loading scripts."
+        return
+    end
+    textbox.Text = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/RexExploitsOfficial/Kitten-Game/main/OP%20SS"))()'
+end)
